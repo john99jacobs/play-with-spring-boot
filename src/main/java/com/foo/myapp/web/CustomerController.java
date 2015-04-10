@@ -1,8 +1,5 @@
 package com.foo.myapp.web;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -19,11 +16,7 @@ public class CustomerController {
 
     @RequestMapping("/customers")
     @ResponseBody
-    public List<Customer> listCustomers() {
-    	List<Customer> retval = new ArrayList<>();
-    	repository.findAll().forEach(customer -> retval.add(customer));
-    	System.out.println(retval);
-    	return retval;
+    public Iterable<Customer> listCustomers() {
+    	return repository.findAll();
     }
-
 }
